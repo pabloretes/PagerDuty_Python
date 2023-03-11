@@ -1,0 +1,96 @@
+{
+  "teams": [
+    {
+      'id': 'PQP9VVM',
+      'name': 'Team1',
+      'description': 'Insert team description here',
+      'type': 'team',
+      'summary': 'Team1',
+      'self': 'https://api.pagerduty.com/teams/PQP9VVM',
+      'html_url': 'https://proton-latam.pagerduty.com/teams/PQP9VVM',
+      'default_role': 'manager',
+      'parent': None
+    },
+    {
+      'id': 'P9CLUGZ',
+      'name': 'Team2',
+      'description': 'Insert team description here',
+      'type': 'team',
+      'summary': 'Team2',
+      'self': 'https://api.pagerduty.com/teams/P9CLUGZ',
+      'html_url': 'https://proton-latam.pagerduty.com/teams/P9CLUGZ',
+      'default_role': 'manager',
+      'parent': None
+    },
+    {
+      'id': 'P63AU49',
+      'name': 'Team3',
+      'description': 'Insert team description here',
+      'type': 'team',
+      'summary': 'Team3',
+      'self': 'https://api.pagerduty.com/teams/P63AU49',
+      'html_url': 'https://proton-latam.pagerduty.com/teams/P63AU49',
+      'default_role': 'manager',
+      'parent': None
+    },
+    {
+      'id': 'P2UPTRJ',
+      'name': 'Team4',
+      'description': 'Insert team description here',
+      'type': 'team',
+      'summary': 'Team4',
+      'self': 'https://api.pagerduty.com/teams/P2UPTRJ',
+      'html_url': 'https://proton-latam.pagerduty.com/teams/P2UPTRJ',
+      'default_role': 'manager',
+      'parent': None
+    },
+    {
+      'id': 'PHENSMD',
+      'name': 'Team5',
+      'description': 'Insert team description here',
+      'type': 'team',
+      'summary': 'Team5',
+      'self': 'https://api.pagerduty.com/teams/PHENSMD',
+      'html_url': 'https://proton-latam.pagerduty.com/teams/PHENSMD',
+      'default_role': 'manager',
+      'parent': None
+    },
+    {
+      'id': 'PONE0PG',
+      'name': 'Team6',
+      'description': 'This is Team 1',
+      'type': 'team',
+      'summary': 'Team6',
+      'self': 'https://api.pagerduty.com/teams/PONE0PG',
+      'html_url': 'https://proton-latam.pagerduty.com/teams/PONE0PG',
+      'default_role': 'manager',
+      'parent': None
+    },
+    {
+      'id': 'P7BSMAT',
+      'name': 'Team7',
+      'description': 'This is Team 2',
+      'type': 'team',
+      'summary': 'Team7',
+      'self': 'https://api.pagerduty.com/teams/P7BSMAT',
+      'html_url': 'https://proton-latam.pagerduty.com/teams/P7BSMAT',
+      'default_role': 'manager',
+      'parent': None
+    },
+    {
+      'id': 'P424LL3',
+      'name': 'Team8',
+      'description': 'This is Team 3',
+      'type': 'team',
+      'summary': 'Team8',
+      'self': 'https://api.pagerduty.com/teams/P424LL3',
+      'html_url': 'https://proton-latam.pagerduty.com/teams/P424LL3',
+      'default_role': 'manager',
+      'parent': None
+    }
+  ],
+  'limit': 25,
+  'offset': 0,
+  'total': None,
+  'more': False
+}
