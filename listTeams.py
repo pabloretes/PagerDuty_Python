@@ -1,6 +1,5 @@
 import requests
 
-
 QUERY = ''
 def list_teams(API_KEY):
     url = 'https://api.pagerduty.com/teams'
