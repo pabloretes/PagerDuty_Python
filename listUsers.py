@@ -10,7 +10,7 @@ TEAM_IDS = []
 INCLUDE = []
 
 
-def list_users():
+def list_users(API_KEY):
     url = 'https://api.pagerduty.com/users'
     headers = {
         'Accept': 'application/vnd.pagerduty+json;version=2',
@@ -24,9 +24,7 @@ def list_users():
     r = requests.get(url, headers=headers, params=payload)
     print('Status Code: {code}'.format(code=r.status_code))
     userDiccionario = r.json()
-
-    for user in userDiccionario["users"]:
-        print(user)
+    return userDiccionario
 
 
 if __name__ == '__main__':
