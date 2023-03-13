@@ -14,11 +14,13 @@ with open("userslist.csv", newline='') as csvUsers:
         name = userData[0]
         email = userData[1]
         title = userData[2]
+        team = userData[3]
         userObject = {
             "type": "user",
             "name": name,
             "email": email,
             "job_title": title,
+            "Team_name": team,
             "role": "limited_user",
         }
         userObjects.append(json.dumps(userObject))
@@ -40,3 +42,4 @@ for userObject in userObjects:
     conn.request("PUT", f'/teams/{pagerduty_team_id}/users/{data["user"]["id"]}', payload, headers)
     res = conn.getresponse()
     data2 = res.read()
+    print(data)
