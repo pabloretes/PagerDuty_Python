@@ -22,7 +22,6 @@ def list_users(API_KEY):
         'include[]': INCLUDE
     }
     r = requests.get(url, headers=headers, params=payload)
-    print('Status Code: {code}'.format(code=r.status_code))
     userDiccionario = r.json()
     return userDiccionario
 

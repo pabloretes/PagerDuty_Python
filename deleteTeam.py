@@ -1,5 +1,3 @@
-import http.client
-import json
 import requests
 
 def delete_team(API_KEY, teamId):
