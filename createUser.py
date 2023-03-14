@@ -2,6 +2,8 @@ import http.client
 import json
 import csv
 import requests
+
+import addUsertoteam
 import findTeam
 
 
@@ -31,12 +33,17 @@ def create_user(API_KEY):
             }
 
             team = userData[3]
+            idTeam = findTeam.findTeambyName(API_KEY, team)
             r = requests.post(url, headers=headers, data=json.dumps(payload))
-            print('Status Code: {code}'.format(code=r.status_code))
-            print(r.json())
+            jsonUser = r.json()
+            idUser = jsonUser['user']['id']
+
+            ######################################################
+            # To add new user to team
+            ######################################################
+            addUsertoteam.add_user_to_team(API_KEY,idTeam,idUser)
+            print(f"{idUser} , su team es: {idTeam}")
 
 
         if __name__ == '__main__':
             create_user()
-
-
