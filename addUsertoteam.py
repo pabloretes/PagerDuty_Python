@@ -11,8 +11,6 @@ def add_user_to_team(API_KEY, TEAM_ID, USER_ID):
         'Content-type': 'application/json'
     }
     r = requests.put(url, headers=headers)
-    print('Status Code: {code}'.format(code=r.status_code))
-    print(r.text)
 
 if __name__ == '__main__':
     add_user_to_team()
