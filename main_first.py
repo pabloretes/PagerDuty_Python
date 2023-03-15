@@ -4,7 +4,7 @@ import deleteTeam
 import createTeam
 import listTeams
 import listUsers
-import findTeam
+import apiKey
 
 
 ############################
@@ -12,7 +12,7 @@ import findTeam
 # March 2023
 ############################
 
-API_KEY = 'u+M1ooHmsW2rTsW7saCg' # se reemplaza
+API_KEY = apiKey.getApiKey()
 objTeams = listTeams.list_teams(API_KEY)
 objUsers = listUsers.list_users(API_KEY)
 
