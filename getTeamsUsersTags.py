@@ -1,6 +1,7 @@
 import apiKey
 import listTeams
 import listUsers
+import listTags
 
 ############################
 # Author: Pablo Retes
@@ -10,6 +11,7 @@ import listUsers
 API_KEY = apiKey.getApiKey()
 objTeams = listTeams.list_teams(API_KEY)
 objUsers = listUsers.list_users(API_KEY)
+objTags = listTags.getTags()
 
 #####################################################################
 #Listar Teams
@@ -20,7 +22,11 @@ print(f" {len(objTeams['teams'])} Team(s) founded")
 
 #Listar Usuarios
 print("\nUser List:")
+
 for user in objUsers['users']:
     print(f" {user['id']}, {user['name']}, {user['email']}")
 print(f" {len(objUsers['users'])} users(s) founded")
 
+print("\nTag List:")
+for tag in objTags['tags']:
+    print(tag['id'], tag['label'])

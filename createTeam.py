@@ -2,6 +2,9 @@ import json
 import csv
 import requests
 
+import addTags
+import tags
+
 teamObjects = []
 url = 'https://api.pagerduty.com/teams'
 file = 'teamlist.csv'
@@ -30,6 +33,12 @@ def create_team(API_KEY):
                 jsonTeam = r.json()
                 idTeam = jsonTeam['team']['id']
                 print('Code: {code},'.format(code=r.status_code), 'Creating Team...',idTeam,teamData[0])
+
+                #######################################
+                # to assign tags a team
+                addTags.addTag('teams',idTeam,teamData[2])
+                #######################################
+
             except requests.exceptions.HTTPError as err:
                 print('Something went wrong. Code: {code}'.format(code=r.status_code),r.reason,teamData[0])
 
