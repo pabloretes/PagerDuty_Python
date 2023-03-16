@@ -12,9 +12,9 @@ import createTeam
 # March 2023
 ############################
 
-API_KEY = apiKey.getApiKey()
-objTeams = listTeams.list_teams(API_KEY)
-objUsers = listUsers.list_users(API_KEY)
+API_KEY = apiKey.getApiKey('NoGithub.txt')
+objTeams = listTeams.list_teams()
+objUsers = listUsers.list_users()
 
 #######################################################################
 #Eliminar Teams

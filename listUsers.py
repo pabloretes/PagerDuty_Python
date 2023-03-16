@@ -1,5 +1,5 @@
 import requests
-import json
+import apiKey
 
 # Update to match your chosen parameters
 QUERY = ''
@@ -7,11 +7,11 @@ TEAM_IDS = []
 INCLUDE = []
 
 
-def list_users(API_KEY):
+def list_users():
     url = 'https://api.pagerduty.com/users'
     headers = {
         'Accept': 'application/vnd.pagerduty+json;version=2',
-        'Authorization': 'Token token={token}'.format(token=API_KEY)
+        'Authorization': 'Token token={token}'.format(token=apiKey.getApiKey('NoGithub.txt'))
     }
     payload = {
         'query': QUERY,

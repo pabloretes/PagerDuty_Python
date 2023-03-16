@@ -1,4 +1,4 @@
 
-def getApiKey():
-    archivo = open("NoGithub.txt")
+def getApiKey(nameFile):
+    archivo = open(nameFile)
     return(archivo.read())

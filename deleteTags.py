@@ -9,7 +9,7 @@ def delete_tags():
     headers = {
         'Content-Type': "application/json",
         'Accept': "application/vnd.pagerduty+json;version=2",
-        'Authorization': f"Token token={apiKey.getApiKey()}"
+        'Authorization': f"Token token={apiKey.getApiKey('NoGithub.txt')}"
         }
 
     for tag in objTags['tags']:

@@ -8,7 +8,7 @@ conn = http.client.HTTPSConnection("api.pagerduty.com")
 headers = {
     'Content-Type': "application/json",
     'Accept': "application/vnd.pagerduty+json;version=2",
-    'Authorization': f"Token token={apiKey.getApiKey()}"
+    'Authorization': f"Token token={apiKey.getApiKey('NoGithub.txt')}"
 }
 
 def addTag(type,idteam,tags):

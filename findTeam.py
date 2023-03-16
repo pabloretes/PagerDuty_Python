@@ -1,7 +1,10 @@
+import apiKey
 import listTeams
 
-def findTeambyName(API_KEY, teamName):
-    objTeams = listTeams.list_teams(API_KEY)
+API_KEY = apiKey.getApiKey('NoGithub.txt')
+
+def findTeambyName(teamName):
+    objTeams = listTeams.list_teams()
     for team in objTeams['teams']:
         if team['name'] == teamName:
             return(team['id'])

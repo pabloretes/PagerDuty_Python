@@ -2,7 +2,7 @@ import http.client
 import apiKey
 import requests
 
-API_KEY = apiKey.getApiKey()
+API_KEY = apiKey.getApiKey('NoGithub.txt')
 headers = {
     'Content-Type': "application/json",
     'Accept': "application/vnd.pagerduty+json;version=2",
