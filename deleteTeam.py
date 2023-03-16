@@ -1,6 +1,6 @@
 import requests
 
-def delete_team(API_KEY, teamId):
+def delete_team(API_KEY, teamId, name):
 
         ID = teamId
         url = 'https://api.pagerduty.com/teams/{id}'.format(id=ID)
@@ -9,8 +9,15 @@ def delete_team(API_KEY, teamId):
             'Authorization': 'Token token={token}'.format(token=API_KEY)
         }
 
-        r = requests.delete(url, headers=headers)
-        return ID
+        try:
+            r = requests.delete(url, headers=headers)
+            r.raise_for_status()
+            print('Code: {code}, deleting Team... '.format(code=r.status_code), teamId, name)
+        except requests.exceptions.HTTPError as err:
+            print('Something went wrong. Code: {code}'.format(code=r.status_code), r.reason, teamId, name)
 
+
+
+        return ID
 if __name__ == '__main__':
     delete_team()

@@ -1,9 +1,6 @@
 import requests
 import json
 
-# Update to match your API key
-API_KEY = 'u+M1ooHmsW2rTsW7saCg'
-
 # Update to match your chosen parameters
 QUERY = ''
 TEAM_IDS = []

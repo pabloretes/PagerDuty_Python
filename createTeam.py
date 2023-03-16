@@ -1,34 +1,39 @@
-import http.client
 import json
 import csv
 import requests
 
 teamObjects = []
-
+url = 'https://api.pagerduty.com/teams'
+file = 'teamlist.csv'
 def create_team(API_KEY):
-    with open("teamlist.csv", newline='') as csvTeams:
+    with open(file, newline='') as csvTeams:
         fileReader = csv.reader(csvTeams)
         for teamData in fileReader:
-            name = teamData[0]
-            description = teamData[1]
-            teamObject: dict[str, str] = {
-                "type": "team",
-                "name": name,
-                "description": description
-            }
-            teamObjects.append(json.dumps(teamObject))
-
-            conn = http.client.HTTPSConnection("api.pagerduty.com")
-            payload = "{\n  \"team\": {\n    \"type\": \"team\",\n    \"name\": \"" + name + "\",\n    \"description\": \"" + description + "\"\n  }\n}"
 
             headers = {
-                'Content-Type': "application/json",
-                'Accept': "application/vnd.pagerduty+json;version=2",
-                'Authorization': f"Token token={API_KEY}"
+                'Accept': 'application/vnd.pagerduty+json;version=2',
+                'Authorization': 'Token token={token}'.format(token=API_KEY),
+                'Content-type': 'application/json'
+            }
+            payload = {
+                'team': {
+                    'type': 'team',
+                    'name': teamData[0],
+                    'description': teamData[1],
+                    'summary': teamData[1]
+                }
             }
 
-            conn.request("POST", "/teams", payload, headers)
+            try:
+                r = requests.post(url, headers=headers, data=json.dumps(payload))
+                r.raise_for_status()
+                jsonTeam = r.json()
+                idTeam = jsonTeam['team']['id']
+                print('Code: {code},'.format(code=r.status_code), 'Creating Team...',idTeam,teamData[0])
+            except requests.exceptions.HTTPError as err:
+                print('Something went wrong. Code: {code}'.format(code=r.status_code),r.reason,teamData[0])
 
-            res = conn.getresponse()
-            data = res.read()
+
+
+
 

@@ -1,11 +1,9 @@
-import http.client
 import json
 import csv
 import requests
 
 import addUsertoteam
 import findTeam
-
 
 from_email = "sinclairchuli@proton.me"
 pagerduty_team_id = ""
@@ -34,15 +32,20 @@ def create_user(API_KEY):
 
             team = userData[3]
             idTeam = findTeam.findTeambyName(API_KEY, team)
-            r = requests.post(url, headers=headers, data=json.dumps(payload))
-            jsonUser = r.json()
-            idUser = jsonUser['user']['id']
+
+            try:
+                r = requests.post(url, headers=headers, data=json.dumps(payload))
+                jsonUser = r.json()
+                idUser = jsonUser['user']['id']
+                print('Code: {code},'.format(code=r.status_code), 'Creating User...', idUser,userData[0] )
+            except requests.exceptions.HTTPError as err:
+                print('Something went wrong. Code: {code}'.format(code=r.status_code),r.reason,userData[0])
 
             ######################################################
             # To add new user to team
             ######################################################
             addUsertoteam.add_user_to_team(API_KEY,idTeam,idUser)
-            print(f"{idUser} , su team es: {idTeam}")
+
 
 
         if __name__ == '__main__':
