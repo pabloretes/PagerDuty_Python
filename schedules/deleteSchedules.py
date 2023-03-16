@@ -1,5 +1,4 @@
 import http.client
-
 import apiKey
 
 conn = http.client.HTTPSConnection("api.pagerduty.com")
@@ -10,7 +9,7 @@ headers = {
     'Authorization': f"Token token={apiKey.getApiKey('../NoGithub.txt')}"
     }
 
-conn.request("GET", "/schedules", headers=headers)
+conn.request("DELETE", "/schedules/P2KYHYP", headers=headers)
 
 res = conn.getresponse()
 data = res.read()

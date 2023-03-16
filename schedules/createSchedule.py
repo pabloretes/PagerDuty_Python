@@ -1,7 +1,10 @@
 import requests
+import apiKey
 import json
+import findUser
 
-# payload = "{\n  \"schedule\": {\n    \"name\": \"Daily Engineering Rotation\",\n    \"type\": \"schedule\",\n    \"time_zone\": \"America/New_York\",\n    \"description\": \"Rotation schedule for engineering\",\n    \"schedule_layers\": [\n      {\n        \"name\": \"Night Shift\",\n        \"start\": \"2015-11-06T20:00:00-05:00\",\n        \"rotation_virtual_start\": \"2015-11-06T20:00:00-05:00\",\n        \"rotation_turn_length_seconds\": 86400,\n        \"users\": [\n          {\n            \"user\": {\n              \"id\": \"PXPGF42\",\n              \"type\": \"user_reference\"\n            }\n          }\n        ],\n        \"restrictions\": [\n          {\n            \"type\": \"daily_restriction\",\n            \"start_time_of_day\": \"08:00:00\",\n            \"duration_seconds\": 32400\n          }\n        ]\n      }\n    ]\n  }\n}"
+idResponder21 = findUser.findUserbyName('Responder21')
+idResponder22 = findUser.findUserbyName('Responder22')
 
 payload = {
   "schedule": {
@@ -18,11 +21,11 @@ payload = {
         "users": [
           {
             "user": {
-              "id": "P64YDN6",
+              "id": idResponder21,
               "type": "user_reference"
             },
             "user": {
-              "id": "P2VNCXG",
+              "id": idResponder22,
               "type": "user_reference"
             }
           }
@@ -42,7 +45,7 @@ payload = {
 headers = {
     'Content-Type': "application/json",
     'Accept': "application/vnd.pagerduty+json;version=2",
-    'Authorization': "Token token=u+M1ooHmsW2rTsW7saCg"
+    'Authorization': f"Token token={apiKey.getApiKey('../NoGithub.txt')}"
     }
 
 url = 'https://api.pagerduty.com/schedules'
