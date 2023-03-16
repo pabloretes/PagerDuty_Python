@@ -1,4 +1,5 @@
 import createUser
+import deleteTags
 import deleteUser
 import listUsers
 import apiKey
@@ -27,6 +28,10 @@ for user in objUsers['users']:
         print(f" This is mine: {user['id']} {user['name']}")
     else:
         deleteUser.delete_user(API_KEY, user['id'], user['name'])
+
+#Eliminar Tags
+print("\n")
+deleteTags.delete_tags()
 ######################################################################
 # Crear Teams
 print("\n")

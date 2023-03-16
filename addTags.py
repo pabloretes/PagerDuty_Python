@@ -1,9 +1,15 @@
 import http.client
 import json
-
+import requests
 import apiKey
 
 conn = http.client.HTTPSConnection("api.pagerduty.com")
+
+headers = {
+    'Content-Type': "application/json",
+    'Accept': "application/vnd.pagerduty+json;version=2",
+    'Authorization': f"Token token={apiKey.getApiKey()}"
+}
 
 def addTag(type,idteam,tags):
     listTags = tags.split()
@@ -16,16 +22,18 @@ def addTag(type,idteam,tags):
             }
           ]
         }
+        url = f'https://api.pagerduty.com/{type}/{idteam}/change_tags'
 
-        headers = {
-            'Content-Type': "application/json",
-            'Accept': "application/vnd.pagerduty+json;version=2",
-            'Authorization': f"Token token={apiKey.getApiKey()}"
-            }
+        try:
+            r = requests.post(url, headers=headers, data=json.dumps(payload))
+            r.raise_for_status()
+            jsonTag = r.json()
+            print(' Code: {code},'.format(code=r.status_code), 'Creating & Adding Tag...', tag)
+        except requests.exceptions.HTTPError as err:
+            print(' Something went wrong. Code: {code}'.format(code=r.status_code),r.reason)
 
-        conn.request("POST", f"/{type}/{idteam}/change_tags", json.dumps(payload), headers)
 
-        res = conn.getresponse()
-        data = res.read()
 
-        print(data.decode("utf-8"))
+
+
+

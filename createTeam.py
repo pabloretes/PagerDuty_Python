@@ -3,7 +3,6 @@ import csv
 import requests
 
 import addTags
-import tags
 
 teamObjects = []
 url = 'https://api.pagerduty.com/teams'

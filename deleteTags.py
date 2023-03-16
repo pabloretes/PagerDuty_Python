@@ -1,19 +1,25 @@
 import http.client
+import requests
 
 import apiKey
 import listTags
-import tags
 
-objTags = listTags.getTags()
-conn = http.client.HTTPSConnection("api.pagerduty.com")
-headers = {
-    'Content-Type': "application/json",
-    'Accept': "application/vnd.pagerduty+json;version=2",
-    'Authorization': f"Token token={apiKey.getApiKey()}"
-    }
+def delete_tags():
+    objTags = listTags.getTags()
+    headers = {
+        'Content-Type': "application/json",
+        'Accept': "application/vnd.pagerduty+json;version=2",
+        'Authorization': f"Token token={apiKey.getApiKey()}"
+        }
 
-for tag in objTags['tags']:
-    conn.request("DELETE", f"/tags/{tag['id']}", headers=headers)
-    res = conn.getresponse()
-    data = res.read()
-    print(data.decode("utf-8"))
+    for tag in objTags['tags']:
+        url = 'https://api.pagerduty.com/tags/{id}'.format(id=tag['id'])
+
+        try:
+            r = requests.delete(url, headers=headers)
+            r.raise_for_status()
+            print('Code: {code}, deleting tag... '.format(code=r.status_code), tag['id'])
+
+        except requests.exceptions.HTTPError as err:
+            print('Something went wrong. Code: {code}'.format(code=r.status_code), r.reason)
+
