@@ -36,17 +36,3 @@ createTeam.create_team(API_KEY)
 print("\n")
 createUser.create_user(API_KEY)
 objUsers = listUsers.list_users(API_KEY)
-######################################################################
-
-# #Listar Teams
-# print("\nListado de Teams Encontrados:")
-# for team in objTeams['teams']:
-#     print(f" {team['id']}",team['name'])
-# print(f" Se encontraron {len(objTeams['teams'])} Team(s)")
-#
-# #Listar Usuarios
-# print("\nListado de Usuarios Encontrados:")
-# for user in objUsers['users']:
-#     print(f" {user['id']}, {user['name']}, {user['email']}")
-# print(f" Se encontraron {len(objUsers['users'])} usuario(s)")
-#
