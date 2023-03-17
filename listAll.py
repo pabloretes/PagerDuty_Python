@@ -2,6 +2,7 @@ import apiKey
 import listTeams
 import listUsers
 import listTags
+from schedules import listSchedules
 
 ############################
 # Author: Pablo Retes
@@ -9,24 +10,29 @@ import listTags
 ############################
 
 API_KEY = apiKey.getApiKey('NoGithub.txt')
-objTeams = listTeams.list_teams()
-objUsers = listUsers.list_users()
-objTags = listTags.getTags()
+listObj = ''
 
 #####################################################################
 #Listar Teams
+listObj = listTeams.list_teams()
 print("Team List:")
-for team in objTeams['teams']:
+for team in listObj['teams']:
     print(f" {team['id']}",team['name'])
-print(f" {len(objTeams['teams'])} Team(s) founded")
 
 #Listar Usuarios
+listObj = listUsers.list_users(API_KEY)
 print("\nUser List:")
-
-for user in objUsers['users']:
+for user in listObj['users']:
     print(f" {user['id']}, {user['name']}, {user['email']}")
-print(f" {len(objUsers['users'])} users(s) founded")
 
+#Listar Tags
+listObj = listTags.getTags()
 print("\nTag List:")
-for tag in objTags['tags']:
+for tag in listObj['tags']:
     print(tag['id'], tag['label'])
+
+#Listar schedules
+listObj = listSchedules.getSchedules(API_KEY)
+print("\nSchedule List:")
+for obj in listObj['schedules']:
+    print(obj['id'], obj['name'])

@@ -1,20 +1,24 @@
 import http.client
-import apiKey
-import listSchedules
+import requests
 
-conn = http.client.HTTPSConnection("api.pagerduty.com")
+def delete_schedules(ApiKey, listSchedules):
+    conn = http.client.HTTPSConnection("api.pagerduty.com")
+    headers = {
+        'Content-Type': "application/json",
+        'Accept': "application/vnd.pagerduty+json;version=2",
+        'Authorization': f"Token token={ApiKey}"
+        }
 
-objSchedules = listSchedules
+    for schedule in listSchedules['schedules']:
+        url = 'https://api.pagerduty.com/schedules/{id}'.format(id=schedule['id'])
 
-headers = {
-    'Content-Type': "application/json",
-    'Accept': "application/vnd.pagerduty+json;version=2",
-    'Authorization': f"Token token={apiKey.getApiKey('../NoGithub.txt')}"
-    }
+        try:
+            r = requests.delete(url, headers=headers)
+            r.raise_for_status()
+            print('Code: {code}, deleting schedule... '.format(code=r.status_code), schedule['id'])
 
-conn.request("DELETE", "/schedules/P8C454S", headers=headers)
+        except requests.exceptions.HTTPError as err:
+            print('Something went wrong. Code: {code}'.format(code=r.status_code), r.reason, schedule['id'])
 
-res = conn.getresponse()
-data = res.read()
 
-print(data.decode("utf-8"))
+
