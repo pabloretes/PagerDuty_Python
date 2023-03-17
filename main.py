@@ -7,7 +7,7 @@ import listTeams
 import deleteTeam
 import createTeam
 from schedules import deleteSchedules,listSchedules,createSchedule
-from services import createBusinessService
+from services import createBusinessService,listBusinessServices,deleteBusinessServices
 
 ############################
 # Author: Pablo Retes
@@ -40,6 +40,12 @@ API_KEY = apiKey.getApiKey('NoGithub.txt')
 # print("\n")
 # listObjects = listSchedules.getSchedules(API_KEY)
 # deleteSchedules.delete_schedules(API_KEY, listObjects)
+
+#Delete Business Services
+print("\n")
+listObjects = listBusinessServices.getServices(API_KEY)
+deleteBusinessServices.delete_business_services(API_KEY,listObjects)
+# deleteSchedules.delete_schedules(API_KEY, listObjects)
 # ######################################################################
 # #To create all
 # # Create Teams
@@ -55,8 +61,8 @@ API_KEY = apiKey.getApiKey('NoGithub.txt')
 # createSchedule.create_shedule(API_KEY)
 
 # Create Business Service
-print("\n")
-createBusinessService.create_business_service(API_KEY)
+# print("\n")
+# createBusinessService.create_business_service(API_KEY)
 
 ######################################################################
 

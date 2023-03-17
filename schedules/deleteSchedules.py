@@ -2,7 +2,7 @@ import http.client
 import requests
 
 def delete_schedules(ApiKey, listSchedules):
-    conn = http.client.HTTPSConnection("api.pagerduty.com")
+
     headers = {
         'Content-Type': "application/json",
         'Accept': "application/vnd.pagerduty+json;version=2",
