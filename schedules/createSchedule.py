@@ -16,14 +16,31 @@ payload = {
       {
         "name": "Night Shift",
         "start": "2015-11-06T20:00:00-05:00",
-        "rotation_virtual_start": "2015-11-06T20:00:00-05:00",
+        "rotation_virtual_start": "2015-11-06T20:00:00-08:00",
         "rotation_turn_length_seconds": 86400,
         "users": [
           {
             "user": {
               "id": idResponder21,
               "type": "user_reference"
-            },
+            }
+          }
+        ],
+        "restrictions": [
+          {
+            "type": "daily_restriction",
+            "start_time_of_day": "08:00:00",
+            "duration_seconds": 32400
+          }
+        ]
+      },
+{
+        "name": "Day Shift",
+        "start": "2015-11-06T08:00:00-20:00",
+        "rotation_virtual_start": "2015-11-06T08:00:00-20:00",
+        "rotation_turn_length_seconds": 86400,
+        "users": [
+          {
             "user": {
               "id": idResponder22,
               "type": "user_reference"
@@ -33,7 +50,7 @@ payload = {
         "restrictions": [
           {
             "type": "daily_restriction",
-            "start_time_of_day": "08:00:00",
+            "start_time_of_day": "20:00:00",
             "duration_seconds": 32400
           }
         ]

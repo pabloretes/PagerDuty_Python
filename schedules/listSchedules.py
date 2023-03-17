@@ -1,5 +1,5 @@
 import http.client
-
+import requests
 import apiKey
 
 conn = http.client.HTTPSConnection("api.pagerduty.com")
@@ -12,7 +12,16 @@ headers = {
 
 conn.request("GET", "/schedules", headers=headers)
 
-res = conn.getresponse()
-data = res.read()
+payload = {
+        'query': ''
+}
 
-print(data.decode("utf-8"))
+url = 'https://api.pagerduty.com/schedules'
+
+def getSchedules():
+    r = requests.get(url, headers=headers, params=payload)
+    jsonObj = r.json()
+    for schedule in jsonObj['schedules']:
+        print(schedule)
+
+getSchedules()

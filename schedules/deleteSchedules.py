@@ -1,7 +1,10 @@
 import http.client
 import apiKey
+import listSchedules
 
 conn = http.client.HTTPSConnection("api.pagerduty.com")
+
+objSchedules = listSchedules
 
 headers = {
     'Content-Type': "application/json",
@@ -9,7 +12,7 @@ headers = {
     'Authorization': f"Token token={apiKey.getApiKey('../NoGithub.txt')}"
     }
 
-conn.request("DELETE", "/schedules/P2KYHYP", headers=headers)
+conn.request("DELETE", "/schedules/P8C454S", headers=headers)
 
 res = conn.getresponse()
 data = res.read()
