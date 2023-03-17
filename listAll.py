@@ -3,6 +3,9 @@ import listTeams
 import listUsers
 import listTags
 from schedules import listSchedules
+from escalationPolicies import listEscalationPolicies
+from services import listServices,listBusinessServices
+
 
 ############################
 # Author: Pablo Retes
@@ -36,3 +39,21 @@ listObj = listSchedules.getSchedules(API_KEY)
 print("\nSchedule List:")
 for obj in listObj['schedules']:
     print(obj['id'], obj['name'])
+
+#Listar escalation policies
+listObj = listEscalationPolicies.getEscalationPolicies(API_KEY)
+print("\nEscalation Policies List:")
+for obj in listObj['escalation_policies']:
+    print(obj['id'], obj['name'])
+
+#to list business services
+listObj = listBusinessServices.getServices(API_KEY)
+print("\nBusiness Services List:")
+for obj in listObj['business_services']:
+    print(obj['id'], obj['name'],'|',obj['description'])
+
+#Listar services
+listObj = listServices.getServices(API_KEY)
+print("\nServices List:")
+for obj in listObj['services']:
+    print(obj['id'], obj['name'],'|',obj['description'])

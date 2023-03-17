@@ -1,5 +1,4 @@
 import requests
-import apiKey
 import json
 import findUser
 
