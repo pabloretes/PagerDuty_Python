@@ -3,7 +3,7 @@ import listTeams
 import listUsers
 import listTags
 from schedules import listSchedules
-from escalationPolicies import listEscalationPolicies
+from escalationPolicies import listEscalationPolicies,findEscalationPolicy
 from services import listServices,listServiceDependencies,listBusinessServices,findBusinessService,findServices
 
 
@@ -40,17 +40,17 @@ print("\nSchedule List:")
 for obj in listObj['schedules']:
     print(obj['id'], obj['name'])
 
-#Listar escalation policies
-listObj = listEscalationPolicies.getEscalationPolicies(API_KEY)
-print("\nEscalation Policies List:")
-for obj in listObj['escalation_policies']:
-    print(obj['id'], obj['name'])
-
 #to list business services
 listObj = listBusinessServices.getServices(API_KEY)
 print("\nBusiness Services List:")
 for obj in listObj['business_services']:
     print(obj['id'], obj['name'],'|',obj['description'])
+
+#Listar escalation policies
+listObj = listEscalationPolicies.getEscalationPolicies(API_KEY)
+print("\nEscalation Policies List:")
+for obj in listObj['escalation_policies']:
+    print(obj['id'], obj['name'])
 
 #Listar services
 listObj = listServices.getServices(API_KEY)
@@ -63,3 +63,4 @@ listObj = listServiceDependencies.getService_Dependecies(API_KEY)
 print("\nServices Dependecies List:")
 for obj in listObj['relationships']:
     print(f'Business Service: {obj["dependent_service"]["id"]} is using {obj["supporting_service"]["id"]} as supporting service')
+

@@ -2,9 +2,10 @@ import requests
 import findTeam
 import json
 
-team = 'Guest Experience'
-idTeam = findTeam.findTeambyName(team)
+
 def create_business_service(ApiKey):
+    team = 'Guest Experience'
+    idTeam = findTeam.findTeambyName(ApiKey,team)
 
     payload = {
         "business_service": {

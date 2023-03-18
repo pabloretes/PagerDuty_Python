@@ -1,12 +1,15 @@
 import requests
 import json
 import csv
+from escalationPolicies import findEscalationPolicy
 
 url = 'https://api.pagerduty.com/services'
 
 
 def create_service(ApiKey):
     with open("services/servicesList.csv", newline='') as csvServices:
+        nameEscalationPolicy = "Acme Hotel Escalation Policy"
+        idEscalationPolicy = findEscalationPolicy.findEscalationPolicyByName(ApiKey,nameEscalationPolicy)
 
         fileReader = csv.reader(csvServices)
         for userData in fileReader:
@@ -17,8 +20,8 @@ def create_service(ApiKey):
             }
 
             NAME = userData[1]
-            DESCRIPTION = 'This service support Hotel operation'
-            ESCALATION_POLICY_ID = 'P1JZCPN'
+            DESCRIPTION = 'This service Supports Hotel Operation'
+            ESCALATION_POLICY_ID = idEscalationPolicy
             TYPE = 'service'
             AUTO_RESOLVE_TIMEOUT = 14400  # 4 hours
             ACKNOWLEDGEMENT_TIMEOUT = 1800  # 30 minutes
@@ -77,8 +80,8 @@ def create_service(ApiKey):
                 r = requests.post(url, headers=headers, data=json.dumps(payload))
                 r.raise_for_status()
                 jsonObj = r.json()
-                print(' Code: {code},'.format(code=r.status_code), 'Creating Service...',
-                      jsonObj['service']['id'],jsonObj['service']['name'])
+                print(' Code: {code},'.format(code=r.status_code), 'Creating Service...')
+                      #jsonObj['service']['id'],jsonObj['service']['name'])
             except requests.exceptions.HTTPError as err:
                 print(' Something went wrong. Code: {code}'.format(code=r.status_code), r.reason,
                       jsonObj['service']['id'], jsonObj['service']['name'])

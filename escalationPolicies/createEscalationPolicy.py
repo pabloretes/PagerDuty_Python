@@ -1,46 +1,53 @@
 import requests
 import json
-import http.client
+
+import findTeam
+import findUser
+from services import findServices
+from schedules import findSchedule
+
 
 
 def create_escalation_policy(ApiKey):
+    idUser = findUser.findUserbyName(ApiKey, 'Responder21')
+    idSchedule = findSchedule.findSchedulebyName(ApiKey,'Acme Hotel Support Center Rotation')
+    idTeam = findTeam.findTeambyName(ApiKey,'Central Engineering and Operations')
+
+    summary = "Acme Hotel Escalation Policy"
+    name = "Acme Hotel Escalation Policy"
+
     payload = {
       "escalation_policy": {
         "type": "escalation_policy",
-        "name": "Acme Hotel Escalation Policy",
+        "summary": summary,
+        "name": name,
         "escalation_rules": [
           {
             "escalation_delay_in_minutes": 30,
             "targets": [
               {
-                "id": "PEYSGVF",
-                "type": "user_reference"
+                "id": idUser,
+                "type": "user_reference",
+              },
+              {
+                "id": idSchedule,
+                "type": "schedule_reference",
               }
             ]
           }
         ],
-        "services": [
-          {
-            "id": "PIJ90N7",
-            "type": "service_reference"
-          }
-        ],
+
         "num_loops": 2,
-        "on_call_handoff_notifications": "if_has_services",
         "teams": [
           {
-            "id": "PQ9K7I8",
-            "type": "team_reference"
+            "id": idTeam,
+            "type": "team_reference",
           }
-        ],
-        "description": "Here is the ep for the engineering team."
+        ]
       }
     }
 
-
-    conn = http.client.HTTPSConnection("api.pagerduty.com")
-
-    payload2 = "{\n  \"escalation_policy\": {\n    \"type\": \"escalation_policy\",\n    \"name\": \"Engineering Escalation Policy\",\n    \"escalation_rules\": [\n      {\n        \"escalation_delay_in_minutes\": 30,\n        \"targets\": [\n          {\n            \"id\": \"PEYSGVF\",\n            \"type\": \"user_reference\"\n          }\n        ]\n      }\n    ],\n    \"services\": [\n      {\n        \"id\": \"PIJ90N7\",\n        \"type\": \"service_reference\"\n      }\n    ],\n    \"num_loops\": 2,\n    \"on_call_handoff_notifications\": \"if_has_services\",\n    \"teams\": [\n      {\n        \"id\": \"PQ9K7I8\",\n        \"type\": \"team_reference\"\n      }\n    ],\n    \"description\": \"Here is the ep for the engineering team.\"\n  }\n}"
+    url = 'https://api.pagerduty.com/escalation_policies'
 
     headers = {
         'Content-Type': "application/json",
@@ -49,9 +56,11 @@ def create_escalation_policy(ApiKey):
         'Authorization': "Token token=u+M1ooHmsW2rTsW7saCg"
         }
 
-    conn.request("POST", "/escalation_policies", payload, headers)
-
-    res = conn.getresponse()
-    data = res.read()
-
-    print(data.decode("utf-8"))
+    try:
+        r = requests.post(url, headers=headers, data=json.dumps(payload))
+        r.raise_for_status()
+        jsonObj = r.json()
+        print(' Code: {code},'.format(code=r.status_code), 'Creating Escalation Policy...',
+              jsonObj['escalation_policy']['id'], jsonObj["escalation_policy"]["summary"])
+    except requests.exceptions.HTTPError as err:
+        print(' Something went wrong. Code: {code} Escalation Policy'.format(code=r.status_code), r.reason)

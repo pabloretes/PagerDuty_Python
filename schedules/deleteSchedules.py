@@ -1,4 +1,3 @@
-import http.client
 import requests
 
 def delete_schedules(ApiKey, listSchedules):
