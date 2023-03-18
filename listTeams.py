@@ -1,13 +1,11 @@
 import requests
 
-import apiKey
-
 QUERY = ''
-def list_teams():
+def list_teams(apiKey):
     url = 'https://api.pagerduty.com/teams'
     headers = {
         'Accept': 'application/vnd.pagerduty+json;version=2',
-        'Authorization': 'Token token={token}'.format(token=apiKey.getApiKey('NoGithub.txt'))
+        'Authorization': 'Token token={token}'.format(token=apiKey)
     }
     payload = {
         'query': QUERY

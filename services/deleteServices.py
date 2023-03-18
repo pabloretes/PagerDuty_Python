@@ -1,6 +1,6 @@
 import requests
 
-def delete_business_services(ApiKey, listServices):
+def delete_services(ApiKey, listServices):
 
     headers = {
         'Content-Type': "application/json",
@@ -8,13 +8,13 @@ def delete_business_services(ApiKey, listServices):
         'Authorization': f"Token token={ApiKey}"
     }
 
-    for service in listServices['business_services']:
-        url = 'https://api.pagerduty.com/business_services/{id}'.format(id=service['id'])
+    for service in listServices['services']:
+        url = 'https://api.pagerduty.com/services/{id}'.format(id=service['id'])
 
         try:
             r = requests.delete(url, headers=headers)
             r.raise_for_status()
-            print('Code: {code}, deleting business service... '.format(code=r.status_code), service['id'])
+            print('Code: {code}, deleting service... '.format(code=r.status_code), service['id'])
 
         except requests.exceptions.HTTPError as err:
             print('Something went wrong. Code: {code}'.format(code=r.status_code), r.reason, service['id'])

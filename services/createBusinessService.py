@@ -8,7 +8,7 @@ def create_business_service(ApiKey):
 
     payload = {
         "business_service": {
-        "name": "Self-serve mobile checkout10",
+        "name": "Self-serve Web checkout",
         "description": "Checkout service for our mobile clients",
         "point_of_contact": "PagerDuty Admin",
         "team": {
@@ -30,7 +30,7 @@ def create_business_service(ApiKey):
         jsonObj = r.json()
         print(' Code: {code},'.format(code=r.status_code), 'Creating Business Service...',jsonObj['business_service']['name'], f'| Team assigned: {team}')
     except requests.exceptions.HTTPError as err:
-        print(' Something went wrong. Code: {code}'.format(code=r.status_code), r.reason)
+        print(' Something went wrong. Code: {code} Business Service'.format(code=r.status_code), r.reason)
 
 
 

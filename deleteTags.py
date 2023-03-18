@@ -4,8 +4,7 @@ import requests
 import apiKey
 import listTags
 
-def delete_tags():
-    objTags = listTags.getTags()
+def delete_tags(API_KEY,objTags):
     headers = {
         'Content-Type': "application/json",
         'Accept': "application/vnd.pagerduty+json;version=2",
@@ -18,8 +17,8 @@ def delete_tags():
         try:
             r = requests.delete(url, headers=headers)
             r.raise_for_status()
-            print('Code: {code}, deleting tag... '.format(code=r.status_code), tag['id'])
+            print('Code: {code}, deleting tag... '.format(code=r.status_code), tag['id'], tag['summary'])
 
         except requests.exceptions.HTTPError as err:
-            print('Something went wrong. Code: {code}'.format(code=r.status_code), r.reason)
+            print('Something went wrong. Code: {code}'.format(code=r.status_code), r.reason, tag['id'], tag['summary'])
 

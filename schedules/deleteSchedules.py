@@ -15,10 +15,10 @@ def delete_schedules(ApiKey, listSchedules):
         try:
             r = requests.delete(url, headers=headers)
             r.raise_for_status()
-            print('Code: {code}, deleting schedule... '.format(code=r.status_code), schedule['id'])
+            print('Code: {code}, deleting schedule... '.format(code=r.status_code), schedule['id'],schedule['name'])
 
         except requests.exceptions.HTTPError as err:
-            print('Something went wrong. Code: {code}'.format(code=r.status_code), r.reason, schedule['id'])
+            print('Something went wrong. Code: {code} schedule'.format(code=r.status_code), r.reason, schedule['id'])
 
 
 

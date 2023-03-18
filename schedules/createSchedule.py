@@ -70,8 +70,8 @@ def create_shedule(ApiKey):
     try:
         r = requests.post(url, headers=headers, data=json.dumps(payload))
         r.raise_for_status()
-        jsonTag = r.json()
-        print(' Code: {code},'.format(code=r.status_code), 'Creating & Adding Schedule...')
+        jsonObj = r.json()
+        print(' Code: {code},'.format(code=r.status_code), 'Creating & Adding Schedule...',jsonObj['schedule']['id'],jsonObj['schedule']['summary'])
     except requests.exceptions.HTTPError as err:
-        print(' Something went wrong. Code: {code}'.format(code=r.status_code),r.reason)
+        print(' Something went wrong. Code: {code}'.format(code=r.status_code),r.reason,jsonObj['schedule']['id'],jsonObj['schedule']['summary'])
 

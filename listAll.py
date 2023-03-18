@@ -29,7 +29,7 @@ for user in listObj['users']:
     print(f" {user['id']}, {user['name']}, {user['email']}")
 
 #Listar Tags
-listObj = listTags.getTags()
+listObj = listTags.getTags(API_KEY)
 print("\nTag List:")
 for tag in listObj['tags']:
     print(tag['id'], tag['label'])
