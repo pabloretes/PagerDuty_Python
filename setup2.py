@@ -1,14 +1,5 @@
-import createUser
-import deleteTags
-import deleteUser
-import listTags
-import listUsers
 import apiKey
-import listTeams
-import deleteTeam
-import createTeam
-from schedules import deleteSchedules,listSchedules,createSchedule
-from services import createBusinessService,listBusinessServices,deleteBusinessServices,createService,deleteServices,listServices
+from services import createBusinessService,listBusinessServices,deleteBusinessServices,createService,deleteServices,listServices,createServiceDependecies
 
 ############################
 # Author: Pablo Retes
@@ -17,9 +8,11 @@ from services import createBusinessService,listBusinessServices,deleteBusinessSe
 #In this script:
 # Old Services are deleted
 # Old Business Services are deleted
+# Old Services Dependecies are deleted
 # New Services are created
 # New Business Services are created
-# To assign to the team that owns the Business Service
+# Team that owns of the Business Service assigned
+# New Service dependecies are created
 
 ###############################################
 
@@ -45,3 +38,7 @@ createBusinessService.create_business_service(API_KEY)
 #Create Service
 print("\n")
 createService.create_service(API_KEY)
+
+#Create Service Dependencies
+print("\n")
+createServiceDependecies.create_service_dependencies(API_KEY)

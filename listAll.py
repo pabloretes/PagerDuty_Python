@@ -4,7 +4,7 @@ import listUsers
 import listTags
 from schedules import listSchedules
 from escalationPolicies import listEscalationPolicies
-from services import listServices,listBusinessServices
+from services import listServices,listServiceDependencies,listBusinessServices,findBusinessService,findServices
 
 
 ############################
@@ -15,7 +15,7 @@ from services import listServices,listBusinessServices
 API_KEY = apiKey.getApiKey('NoGithub.txt')
 listObj = ''
 
-#####################################################################
+####################################################################
 #Listar Teams
 listObj = listTeams.list_teams(API_KEY)
 print("Team List:")
@@ -57,3 +57,9 @@ listObj = listServices.getServices(API_KEY)
 print("\nServices List:")
 for obj in listObj['services']:
     print(obj['id'], obj['name'],'|',obj['description'])
+
+#Listar service dependecies
+listObj = listServiceDependencies.getService_Dependecies(API_KEY)
+print("\nServices Dependecies List:")
+for obj in listObj['relationships']:
+    print(f'Business Service: {obj["dependent_service"]["id"]} is using {obj["supporting_service"]["id"]} as supporting service')
