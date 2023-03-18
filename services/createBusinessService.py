@@ -10,7 +10,7 @@ def create_business_service(ApiKey):
         "business_service": {
         "name": "Self-serve Web checkout",
         "description": "Checkout service for our mobile clients",
-        "point_of_contact": "PagerDuty Admin",
+        "point_of_contact": "Pablo Retes",
         "team": {
           "id": idTeam
         }
