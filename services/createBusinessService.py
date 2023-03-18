@@ -8,8 +8,8 @@ def create_business_service(ApiKey):
 
     payload = {
         "business_service": {
-        "name": "Self-serve Web checkout",
-        "description": "Checkout service for our mobile clients",
+        "name": "Hotel Support Center",
+        "description": "service for our web & mobile clients",
         "point_of_contact": "Pablo Retes",
         "team": {
           "id": idTeam

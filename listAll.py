@@ -17,7 +17,7 @@ listObj = ''
 
 #####################################################################
 #Listar Teams
-listObj = listTeams.list_teams()
+listObj = listTeams.list_teams(API_KEY)
 print("Team List:")
 for team in listObj['teams']:
     print(f" {team['id']}",team['name'])
