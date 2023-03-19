@@ -80,7 +80,7 @@ def create_service(ApiKey):
                 r = requests.post(url, headers=headers, data=json.dumps(payload))
                 r.raise_for_status()
                 jsonObj = r.json()
-                print(' Code: {code},'.format(code=r.status_code), 'Creating Service...')
+                print(' Code: {code},'.format(code=r.status_code), f'Creating Service...{jsonObj["service"]["name"]}',jsonObj["service"]["id"])
                       #jsonObj['service']['id'],jsonObj['service']['name'])
             except requests.exceptions.HTTPError as err:
                 print(' Something went wrong. Code: {code}'.format(code=r.status_code), r.reason,

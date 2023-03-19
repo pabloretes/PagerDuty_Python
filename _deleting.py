@@ -60,6 +60,7 @@ listObjects = listSchedules.getSchedules(API_KEY)
 deleteSchedules.delete_schedules(API_KEY, listObjects)
 
 #Delete Teams
+print("\n")
 objTeams = listTeams.list_teams(API_KEY)
 for team in objTeams['teams']:
     deleteTeam.delete_team(API_KEY, team['id'], team['name'])
@@ -70,4 +71,3 @@ listObjects = listBusinessServices.getServices(API_KEY)
 deleteBusinessServices.delete_business_services(API_KEY,listObjects)
 
 
-######################################################################
