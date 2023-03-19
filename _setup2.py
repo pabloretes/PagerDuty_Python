@@ -1,7 +1,8 @@
 import apiKey
 from schedules import createSchedule
-from services import createBusinessService,createService,createServiceDependecies
+from services import createBusinessService,createService,createServiceDependecies,findServices
 from escalationPolicies import createEscalationPolicy
+from integrations import createIntegration
 
 ############################
 # Author: Pablo Retes
@@ -41,3 +42,7 @@ createService.create_service(API_KEY)
 print("\n")
 createServiceDependecies.create_service_dependencies(API_KEY)
 
+#Create Service integration
+print("\n")
+idService = findServices.findServicebyName(API_KEY,'ACME Hotel Payment Processing')
+createIntegration.create_email_integration(API_KEY,idService)
