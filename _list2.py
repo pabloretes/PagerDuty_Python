@@ -35,6 +35,7 @@ print("\nBusiness Services List:")
 for obj in listBServices['business_services']:
     print(obj['id'], obj['name'],'|',obj['description'])
 
+
 #Listar escalation policies
 listObj = listEscalationPolicies.getEscalationPolicies(API_KEY)
 print("\nEscalation Policies List:")
@@ -54,3 +55,9 @@ for objBService in listBServices['business_services']:
     ObjServicesDependencies = listServiceDependencies.get_service_dependencies(API_KEY,idBS)
     for obj in ObjServicesDependencies['relationships']:
         print(f'Business Service has :{obj["dependent_service"]["id"]}',f'has supporting service : {obj["supporting_service"]["id"]}')
+
+#Listar services integrations
+print("\nIntegration List:")
+for obj in ObjServices['services']:
+    for objIntegration in obj['integrations']:
+        print(f'Service {obj["id"]} {obj["name"]} | has integration: {objIntegration["id"]} {objIntegration["type"]}')

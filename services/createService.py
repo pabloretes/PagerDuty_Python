@@ -20,7 +20,7 @@ def create_service(ApiKey):
             }
 
             NAME = userData[1]
-            DESCRIPTION = 'This service Supports Hotel Operation'
+            DESCRIPTION = userData[1]
             ESCALATION_POLICY_ID = idEscalationPolicy
             TYPE = 'service'
             AUTO_RESOLVE_TIMEOUT = 14400  # 4 hours
@@ -81,7 +81,7 @@ def create_service(ApiKey):
                 r.raise_for_status()
                 jsonObj = r.json()
                 print(' Code: {code},'.format(code=r.status_code), f'Creating Service...{jsonObj["service"]["name"]}',jsonObj["service"]["id"])
-                      #jsonObj['service']['id'],jsonObj['service']['name'])
+
             except requests.exceptions.HTTPError as err:
                 print(' Something went wrong. Code: {code}'.format(code=r.status_code), r.reason,
                       jsonObj['service']['id'], jsonObj['service']['name'])
