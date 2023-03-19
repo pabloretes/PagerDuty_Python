@@ -31,7 +31,7 @@ def create_user(API_KEY):
             }
 
             team = userData[3]
-            idTeam = findTeam.findTeambyName(team)
+            idTeam = findTeam.findTeambyName(API_KEY,team)
 
             try:
                 r = requests.post(url, headers=headers, data=json.dumps(payload))

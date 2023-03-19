@@ -1,22 +1,18 @@
-import requests
-import services.listBusinessServices
+import http.client
+import json
 
-def getService_Dependecies(ApiKey):
-    listObj = services.listBusinessServices.getServices(ApiKey)
-    for obj in listObj['business_services']:
-        idBusinessService = obj['id']
-        url = 'https://api.pagerduty.com/service_dependencies/business_services/{id}'.format(id=idBusinessService)
+conn = http.client.HTTPSConnection("api.pagerduty.com")
 
-        headers = {
-            'Content-Type': "application/json",
-            'Accept': "application/vnd.pagerduty+json;version=2",
-            'Authorization': f"Token token={ApiKey}"
+def get_service_dependencies(API_Key, idBusinessService):
+    headers = {
+        'Content-Type': "application/json",
+        'Accept': "application/vnd.pagerduty+json;version=2",
+        'Authorization': f"Token token={API_Key}"
         }
 
-        payload = {
-            'query': ''
-        }
+    conn.request("GET", f"/service_dependencies/business_services/{idBusinessService}", headers=headers)
 
-        r = requests.get(url, headers=headers, params=payload)
-        jsonObj = r.json()
-        return (jsonObj)
+    res = conn.getresponse()
+    data = res.read()
+    jsonObj = json.loads(data)
+    return jsonObj

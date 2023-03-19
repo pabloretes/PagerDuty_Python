@@ -39,7 +39,7 @@ def create_service_dependencies(API_KEY):
                 r = requests.post(url, headers=headers, data=json.dumps(payload))
                 r.raise_for_status()
                 jsonObj = r.json()
-                print(' Code: {code},'.format(code=r.status_code), f'Creating Service dependencies...for business service --> {serviceData[2]}:'
+                print(' Code: {code},'.format(code=r.status_code), f'Creating Service dependencies...for business service --> {idBusinessService}:'
                                                                    f'technical service: {idService}')
 
             except requests.exceptions.HTTPError as err:
