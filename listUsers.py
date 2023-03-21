@@ -1,4 +1,5 @@
 import requests
+import csv
 
 QUERY = ''
 TEAM_IDS = []

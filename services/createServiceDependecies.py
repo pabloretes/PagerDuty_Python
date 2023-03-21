@@ -4,9 +4,9 @@ import services.findBusinessService
 import services.findServices
 import csv
 
-def create_service_dependencies(API_KEY):
+def create_service_dependencies(API_KEY,nameFile):
 
-    with open("services/servicesList.csv", newline='') as csvServices:
+    with open(nameFile, newline='') as csvServices:
         fileReader = csv.reader(csvServices)
         for serviceData in fileReader:
             idBusinessService = services.findBusinessService.findBusinessServicebyName(API_KEY, serviceData[2])

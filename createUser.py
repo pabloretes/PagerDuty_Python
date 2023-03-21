@@ -10,9 +10,9 @@ pagerduty_team_id = ""
 userObjects = []
 idTeam = ""
 
-def create_user(API_KEY):
+def create_user(API_KEY,nameFile):
     url = 'https://api.pagerduty.com/users'
-    with open("userslist.csv", newline='') as csvUsers:
+    with open(nameFile, newline='') as csvUsers:
         fileReader = csv.reader(csvUsers)
         for userData in fileReader:
             headers = {

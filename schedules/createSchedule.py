@@ -4,8 +4,8 @@ import findUser
 
 
 def create_shedule(ApiKey):
-    idResponder21 = findUser.findUserbyName(ApiKey, 'Responder21')
-    idResponder22 = findUser.findUserbyName(ApiKey, 'Responder22')
+    idResponder01 = findUser.findUserbyName(ApiKey, 'Responder01')
+    idResponder02 = findUser.findUserbyName(ApiKey, 'Responder02')
 
     payload = {
       "schedule": {
@@ -22,7 +22,7 @@ def create_shedule(ApiKey):
             "users": [
               {
                 "user": {
-                  "id": idResponder21,
+                  "id": idResponder01,
                   "type": "user_reference"
                 }
               }
@@ -43,7 +43,7 @@ def create_shedule(ApiKey):
             "users": [
               {
                 "user": {
-                  "id": idResponder22,
+                  "id": idResponder02,
                   "type": "user_reference"
                 }
               }

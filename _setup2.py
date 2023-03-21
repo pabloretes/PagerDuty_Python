@@ -21,28 +21,33 @@ from integrations import createIntegration
 API_KEY = apiKey.getApiKey('NoGithub.txt')
 
 ###############################################
+# Just one time execute in initial configuration
+# #Create Schedules
+# print("\n")
+# createSchedule.create_shedule(API_KEY)
 
-#Create Schedules
-print("\n")
-createSchedule.create_shedule(API_KEY)
+# #Create Business Service
+# print("\n")
+# nameFile = 'services/businessserviceslist.csv'
+# createBusinessService.create_business_service(API_KEY,nameFile)
 
-#Create Business Service
-print("\n")
-createBusinessService.create_business_service(API_KEY)
-
-#Create Escalation Policy
-print("\n")
-createEscalationPolicy.create_escalation_policy(API_KEY)
+# Just one time execute in initial configuration
+# #Create Escalation Policy
+# print("\n")
+# createEscalationPolicy.create_escalation_policy(API_KEY)
 
 #Create Service
 print("\n")
-createService.create_service(API_KEY)
+nameFile = 'services/servicesList.csv'
+createService.create_service(API_KEY,nameFile)
 
 #Create Service Dependencies
 print("\n")
-createServiceDependecies.create_service_dependencies(API_KEY)
+nameFile = 'services/servicesList.csv'
+createServiceDependecies.create_service_dependencies(API_KEY,nameFile)
 
-#Create Service integration
-print("\n")
-idService = findServices.findServicebyName(API_KEY,'ACME Hotel Payment Processing')
-createIntegration.create_email_integration(API_KEY,idService)
+# Just one time execute in initial configuration
+# #Create Service integration
+# print("\n")
+# idService = findServices.findServicebyName(API_KEY,'ACME Payment Processing service')
+# createIntegration.create_email_integration(API_KEY,idService)

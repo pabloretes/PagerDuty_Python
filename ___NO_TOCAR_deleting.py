@@ -34,15 +34,15 @@ API_KEY = apiKey.getApiKey('NoGithub.txt')
 print("\n")
 objUsers = listUsers.list_users(API_KEY)
 for user in objUsers['users']:
-    if user["id"] == "PP1VDH4" or user["name"] == "Responder01" or user["name"] == "Responder02":
-        print(f" Those are protected: {user['id']} {user['name']}")
+    if user["id"] == "PP1VDH4":
+        print(f" This is mine: {user['id']} {user['name']}")
     else:
         deleteUser.delete_user(API_KEY, user['id'], user['name'])
 
-# #Delete Tags
-# print("\n")
-# listObjects = listTags.getTags(API_KEY)
-# deleteTags.delete_tags(API_KEY, listObjects)
+#Delete Tags
+print("\n")
+listObjects = listTags.getTags(API_KEY)
+deleteTags.delete_tags(API_KEY, listObjects)
 
 #Delete Technical Services
 print("\n")
@@ -69,7 +69,5 @@ for team in objTeams['teams']:
 print("\n")
 listObjects = listBusinessServices.getServices(API_KEY)
 deleteBusinessServices.delete_business_services(API_KEY,listObjects)
-
-
 
 

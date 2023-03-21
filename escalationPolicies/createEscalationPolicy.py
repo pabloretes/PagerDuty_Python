@@ -8,10 +8,10 @@ from schedules import findSchedule
 
 
 
-def create_escalation_policy(ApiKey):
-    idUser = findUser.findUserbyName(ApiKey, 'Responder21')
+def create_escalation_policy(ApiKey,teamName):
+    idUser = findUser.findUserbyName(ApiKey, 'Responder01')
     idSchedule = findSchedule.findSchedulebyName(ApiKey,'Acme Hotel Support Center Rotation')
-    idTeam = findTeam.findTeambyName(ApiKey,'Central Engineering and Operations')
+    idTeam = findTeam.findTeambyName(ApiKey,teamName)
 
     summary = "Acme Hotel Escalation Policy"
     name = "Acme Hotel Escalation Policy"

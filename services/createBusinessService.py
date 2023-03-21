@@ -4,8 +4,8 @@ import json
 import csv
 
 
-def create_business_service(ApiKey):
-    with open("services/businessserviceslist.csv", newline='') as csvServices:
+def create_business_service(ApiKey,nameFile):
+    with open(nameFile, newline='') as csvServices:
         fileReader = csv.reader(csvServices)
         for bsData in fileReader:
             nameBusinessService = bsData[0]

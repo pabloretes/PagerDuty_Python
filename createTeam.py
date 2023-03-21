@@ -6,8 +6,8 @@ import addTags
 
 teamObjects = []
 url = 'https://api.pagerduty.com/teams'
-file = 'teamlist.csv'
-def create_team(API_KEY):
+#file = 'teamlist.csv'
+def create_team(API_KEY,file):
     with open(file, newline='') as csvTeams:
         fileReader = csv.reader(csvTeams)
         for teamData in fileReader:

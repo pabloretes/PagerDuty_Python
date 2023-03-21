@@ -6,8 +6,8 @@ from escalationPolicies import findEscalationPolicy
 url = 'https://api.pagerduty.com/services'
 
 
-def create_service(ApiKey):
-    with open("services/servicesList.csv", newline='') as csvServices:
+def create_service(ApiKey,nameFile):
+    with open(nameFile, newline='') as csvServices:
         nameEscalationPolicy = "Acme Hotel Escalation Policy"
         idEscalationPolicy = findEscalationPolicy.findEscalationPolicyByName(ApiKey,nameEscalationPolicy)
 

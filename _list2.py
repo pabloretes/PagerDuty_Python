@@ -46,7 +46,8 @@ for obj in listObj['escalation_policies']:
 ObjServices = listServices.getServices(API_KEY)
 print("\nServices List:")
 for obj in ObjServices['services']:
-    print(obj['id'], obj['name'],'|',obj['description'])
+    #print(obj['id'], obj['name'],'|',obj['description'])
+    print(obj)
 
 #Listar service dependencies
 print("\nServices Dependencies List:")

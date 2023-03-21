@@ -23,12 +23,14 @@ API_KEY = apiKey.getApiKey('NoGithub.txt')
 #######################################################################
 
 #To create all
-
+#
 # Create Teams
 print("\n")
-createTeam.create_team(API_KEY)
+nameFile = "teamlist.csv"
+createTeam.create_team(API_KEY,nameFile)
 
 # #Create Usuarios
 print("\n")
-createUser.create_user(API_KEY)
+nameFile = "userslist.csv"
+createUser.create_user(API_KEY,nameFile)
 
